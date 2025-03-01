@@ -39,7 +39,7 @@ const ProductCart = ({ product }: IProps) => {
         >
           EDIT
         </Button>
-        <Button className="bg-red-700 hover:bg-red-900 ">DELETE</Button>
+        <Button className="bg-red-700 hover:bg-red-900">DELETE</Button>
       </div>
     </div>
   );
