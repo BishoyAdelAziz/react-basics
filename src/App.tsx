@@ -4,11 +4,25 @@ import ProductCart from "./Components/UI/ProductCard";
 import Input from "./Components/UI/Input";
 import { productList, formInputsList } from "./Data";
 import { useState } from "react";
+import { IProduct } from "./interfaces";
 function App() {
   //** States */
+  const [Product, setProduct] = useState<IProduct>({
+    title: "",
+    description: "",
+    imageURL: "",
+    price: "",
+    category: { name: "", imageURL: "" },
+    colors: [],
+  });
   const [isOpen, setIsOpen] = useState(true);
   //** Handlers */
   const closeModal = () => setIsOpen(false);
+  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.value);
+    const { name, value } = event.target;
+    setProduct({ ...Product, [name]: value });
+  };
   // ** Renders
   const renderProductList = productList.map((product) => (
     <ProductCart key={product.id} product={product} />
@@ -21,7 +35,12 @@ function App() {
       >
         {FormInput.label} :
       </label>
-      <Input key={FormInput.id} />
+      <Input
+        type={FormInput.type}
+        key={FormInput.id}
+        value={""}
+        onChange={() => onChangeHandler}
+      />
     </div>
   ));
   return (
@@ -47,6 +66,9 @@ function App() {
           </div>
         </form>
       </Modal>
+      <div className="fixed top-0 bg-indigo-500 hover:bg-indigo-900 text-white p-3  cursor-pointer">
+        <Button onClick={() => setIsOpen(true)}>Show Form</Button>
+      </div>
     </main>
   );
 }
