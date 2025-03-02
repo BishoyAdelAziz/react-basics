@@ -5,6 +5,7 @@ import Input from "./Components/UI/Input";
 import { productList, formInputsList } from "./Data";
 import { useState } from "react";
 import { IProduct } from "./interfaces";
+
 function App() {
   //** States */
   const [Product, setProduct] = useState<IProduct>({
@@ -16,17 +17,19 @@ function App() {
     colors: [],
   });
   const [isOpen, setIsOpen] = useState(true);
+
   //** Handlers */
   const closeModal = () => setIsOpen(false);
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
     const { name, value } = event.target;
     setProduct({ ...Product, [name]: value });
   };
+
   // ** Renders
   const renderProductList = productList.map((product) => (
     <ProductCart key={product.id} product={product} />
   ));
+
   const renderFormInputList = formInputsList.map((FormInput) => (
     <div key={FormInput.id} className="flex flex-col gap-2">
       <label
@@ -38,11 +41,13 @@ function App() {
       <Input
         type={FormInput.type}
         key={FormInput.id}
-        value={""}
-        onChange={() => onChangeHandler}
+        name={FormInput.name} // Ensure name is set correctly
+        value={Product[FormInput.name]} // Use product here
+        onChange={onChangeHandler}
       />
     </div>
   ));
+
   return (
     <main className="container mx-auto">
       <div className="border-1 border-gray-400  m-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-5 gap-5 rounded-2xl">
@@ -61,7 +66,7 @@ function App() {
               Submit
             </Button>
             <Button className="uppercase bg-gray-400 hover:bg-gray-700">
-              Cancle
+              Cancel
             </Button>
           </div>
         </form>
