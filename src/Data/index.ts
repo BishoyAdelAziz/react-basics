@@ -231,3 +231,15 @@ export const categories: ICategory[] = [
       "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
   },
 ];
+export const Colors = [
+  "#A31ACB",
+  "#FF6E31",
+  "#3C2A21",
+  "#CB1C8D",
+  "#645CBB",
+  "#FF0032",
+  "#820000",
+  "#13005A",
+  "#1F8A70",
+  "#84D2C5",
+];

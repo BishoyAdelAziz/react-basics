@@ -6,7 +6,7 @@ interface IProps {
   product: IProduct;
 }
 const ProductCart = ({ product }: IProps) => {
-  const { title, description, imageURL, price, category, id } = product;
+  const { title, description, imageURL, price, category, id, colors } = product;
   return (
     <div
       key={id}
@@ -17,12 +17,7 @@ const ProductCart = ({ product }: IProps) => {
       </div>
       <h3 className="text-2xl">{title}</h3>
       <p className="text-sm">{textSlicer(description)}</p>
-      <div className="flex items-center space-x-2">
-        <span className="w-5 h-5 rounded-full bg-indigo-600 cursor-pointer" />
-        <span className="w-5 h-5 rounded-full bg-yellow-600 cursor-pointer" />
-        <span className="w-5 h-5 rounded-full bg-red-600 cursor-pointer" />
-        <span className="w-5 h-5 rounded-full bg-black cursor-pointer" />
-      </div>
+
       <div className="flex items-center justify-between">
         <span>${price}</span>
         <ProductImage
@@ -30,6 +25,19 @@ const ProductCart = ({ product }: IProps) => {
           alt={category.name}
           className="w-10 h-10 rounded-full"
         />
+      </div>
+      <div className="flex space-x-2">
+        {colors.map((color) => (
+          <span
+            style={{
+              backgroundColor: color,
+              width: 20,
+              height: 20,
+              borderRadius: 50,
+            }}
+            key={color}
+          />
+        ))}
       </div>
       <div className="flex items-center justify-between space-x-2">
         <Button
