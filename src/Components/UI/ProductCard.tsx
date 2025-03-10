@@ -4,8 +4,15 @@ import { IProduct } from "../../interfaces";
 import { textSlicer } from "../../Utils";
 interface IProps {
   product: IProduct;
+  setProductToEdit: (product: IProduct) => void;
+  openEditModal: () => void;
 }
-const ProductCart = ({ product }: IProps) => {
+
+const ProductCart = ({ product, setProductToEdit, openEditModal }: IProps) => {
+  const OnEdit = () => {
+    setProductToEdit(product);
+    openEditModal();
+  };
   const { title, description, imageURL, price, category, id, colors } = product;
   return (
     <div
@@ -41,7 +48,7 @@ const ProductCart = ({ product }: IProps) => {
       </div>
       <div className="flex items-center justify-between space-x-2">
         <Button
-          onClick={() => alert(`you Need to Edit ${title}`)}
+          onClick={OnEdit}
           className="bg-indigo-700 hover:bg-indigo-900"
           width="w-full"
         >
