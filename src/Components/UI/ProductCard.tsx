@@ -6,12 +6,22 @@ interface IProps {
   product: IProduct;
   setProductToEdit: (product: IProduct) => void;
   openEditModal: () => void;
+  idx: number;
+  setProductToEditIdx: (idx: number) => void;
 }
 
-const ProductCart = ({ product, setProductToEdit, openEditModal }: IProps) => {
+const ProductCart = ({
+  product,
+  setProductToEdit,
+  openEditModal,
+  setProductToEditIdx,
+  idx,
+}: IProps) => {
   const OnEdit = () => {
     setProductToEdit(product);
     openEditModal();
+    setProductToEditIdx(idx);
+    console.log(idx);
   };
   const { title, description, imageURL, price, category, id, colors } = product;
   return (

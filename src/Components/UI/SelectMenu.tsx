@@ -10,12 +10,19 @@ import { CheckIcon } from "@heroicons/react/20/solid";
 import { categories } from "../../Data";
 import { ICategory } from "../../interfaces";
 interface IProps {
-  selected: ICategory;
+  selected: { name: string; imageURL: string; id: string };
   setSelected: (category: ICategory) => void;
 }
+
 export default function SelectMenu({ selected, setSelected }: IProps) {
   return (
-    <Listbox value={selected} onChange={setSelected}>
+    <Listbox
+      value={selected}
+      onChange={(value) => {
+        setSelected(value);
+        console.log(`Selected: ${value}`);
+      }}
+    >
       <Label className="block text-sm/6 font-medium text-gray-900 capitalize ">
         Category :
       </Label>
