@@ -36,7 +36,6 @@ function App() {
   const [product, setProduct] = useState<IProduct>(DefaultProductObject);
   const [ProductToEdit, setProductToEdit] =
     useState<IProduct>(DefaultProductObject);
-  console.log(ProductToEdit);
   const [selected, setSelected] = useState(categories[0]);
   const [ProductToEditIdx, setProductToEditIdx] = useState(0);
 

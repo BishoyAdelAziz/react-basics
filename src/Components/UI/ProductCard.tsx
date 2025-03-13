@@ -21,7 +21,6 @@ const ProductCart = ({
     setProductToEdit(product);
     openEditModal();
     setProductToEditIdx(idx);
-    console.log(idx);
   };
   const { title, description, imageURL, price, category, id, colors } = product;
   return (

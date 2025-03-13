@@ -10,18 +10,19 @@ export interface IProduct {
   category: {
     name: string;
     imageURL: string;
+    id?: string;
   };
 }
 
 export interface IFormInput {
   id: string;
-  name: ProductNameTypes;         
+  name: ProductNameTypes;
   label: string;
   type: string;
 }
 
 export interface ICategory {
-  id: string;
+  id?: string;
   name: string;
   imageURL: string;
 }
